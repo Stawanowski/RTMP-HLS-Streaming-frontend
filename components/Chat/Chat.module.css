@@ -1,0 +1,94 @@
+.container{
+    width: 340px ;
+    height: var(--MinContainerHeight);
+    background-color: rgb(49, 49, 49);
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+.container h4{
+    text-align: center;
+    height: 2rem;
+    border-bottom: 1px solid black;
+}
+.chatContainer{
+    width: 340px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    height: calc(100vh - 2rem - 3rem - 3rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 0.5rem;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+.chatContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.chatMessage{
+    background-color: rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+    padding: 0.5rem 0.4rem;
+    /* word-break:normal; */
+    display: flex;
+    flex-direction: row;
+    overflow-wrap: anywhere;
+    line-height: 1rem;
+}
+.chatInput{
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    padding: 0.1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+}
+.chatInput form{
+    width: 100%;
+}
+.chatInput button{
+    width: 35px;
+}
+.chatInput input{
+    width: calc(100% - 35px);
+}
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 200px;
+    }
+    .chatContainer{
+        width: 200px !important;
+    }
+
+}
+@media screen and (max-width: 920px) {
+    .container{
+        width: calc(100% - 0.3rem);
+        height: 300px;
+        margin: 0.5rem 0;
+        position: relative;
+    }
+    .chatContainer{
+        height: var(--MinContainerHeight);
+        width: 100% !important;
+    }
+    .chatInput{
+        background-color: rgb(61, 61, 61);
+        padding: 0.3rem 0;
+        width: 100%;
+    }
+    .chatInput form{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .container{
+        width: calc(100% - 0.3rem);
+    }
+}

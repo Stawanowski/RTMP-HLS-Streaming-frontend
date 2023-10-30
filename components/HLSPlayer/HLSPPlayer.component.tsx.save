@@ -1,0 +1,133 @@
+"use client"
+import styles from './HLSPlayer.module.css'
+import React, { useRef, useEffect, useState } from 'react';
+import Hls from 'hls.js';
+import { useRouter } from 'next/navigation';
+import ReactPlayer from "react-player";
+import Controls from './Controls/Controls'
+// import {FaPlay, FaPause, FaVolumeDown} from 'react-icons/fa'
+
+
+const HLSPlayer = ({ native, hd, sd, channel }:{native:string, hd:string, sd:string, channel:string}) => {
+  
+  const videoRef:any = useRef(null);
+  const containerRef = useRef(null)
+  const [videoUrl, setVideoUrl] = useState(1080)
+
+  // const online = <ReactPlayer className={styles.player} controls url={videoUrl} playing={true} muted={false} height="100%" width="100%" ref={videoRef} />
+  const [initVolume, setInitVolume]:any = useState(0)
+  
+  const [playing, setPlaying] = useState(true)
+  const [volume, setVolume]:any = useState(parseFloat(initVolume) || 0.5)
+  const [pipMode, setPipMode] = useState(false);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState(native)
+
+  useEffect(():any => {
+    console.log(native, hd, sd, videoUrl)
+    const hls = new Hls();
+    hls.loadSource(native);
+    hls.attachMedia(videoRef.current);
+    setInitVolume(localStorage.getItem('volume'))
+  }, [])
+  const handleChangeRes = (res:any) => {
+    switch (res){
+      case 1080:{
+        setVideoUrl(1080)
+	setCurrentVideoUrl(native)
+        const hls = new Hls();
+        hls.loadSource(native);
+        hls.attachMedia(videoRef.current);
+      }
+      case 720:{
+        setVideoUrl(720)
+	setCurrentVideoUrl(hd)
+        const hls = new Hls();
+        hls.loadSource(hd);
+        hls.attachMedia(videoRef.current);
+      }
+      case 480:{
+        setVideoUrl(480)
+	setCurrentVideoUrl(sd)
+        const hls = new Hls();
+        hls.loadSource(sd);
+        hls.attachMedia(videoRef.current);
+      }
+    }
+
+  }
+
+  const handleFullScreen = () => {
+    const playerContainer = document.getElementById('playerContainer');
+    if (playerContainer) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        playerContainer.requestFullscreen();
+      }
+    }
+  };
+
+  
+  
+  return (
+    <>
+    <div id="playerContainer" style={{position: "relative", height: "min-content"}}>
+      {videoUrl == 1080 && (
+        <ReactPlayer id="player" pip={pipMode}  className={styles.player}  playing={playing}  controls={false} url={native}  muted={false} height={"min-content"} width="100%" ref={videoRef} />
+      )}
+      {videoUrl == 720 && (
+        <ReactPlayer id="player" pip={pipMode}  className={styles.player}  playing={playing}  controls={false} url={hd}  muted={false} height={"min-content"} width="100%" ref={videoRef} />
+      )}
+      {videoUrl == 480 && (
+        <ReactPlayer id="player" pip={pipMode}  className={styles.player}  playing={playing}  controls={false} url={sd}  muted={f
+     <div className={styles.controls}>
+        <button onClick={() => setPlaying(!playing)}>PlayPause</button>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={volume}
+          onChange={(e) => setVolume(e.target.value)}
+        />
+        <div>
+          <button>
+            Res
+          </button>
+          <div>
+            {videoUrl == 1080 && (
+              <>
+                <button className={styles.activeRes} onClick={() => handleChangeRes(1080)}>1080p</button>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(720)}>720p</button>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(480)}>480p</button>
+              </>
+            )}
+            {videoUrl == 720 && (
+              <>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(1080)}>1080p</button>
+                <button className={styles.activeRes} onClick={() => handleChangeRes(720)}>720p</button>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(480)}>480p</button>
+              </>
+            )}
+            {videoUrl == 480 && (
+              <>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(1080)}>1080p</button>
+                <button className={styles.inActiveRes} onClick={() => handleChangeRes(720)}>720p</button>
+                <button className={styles.activeRes} onClick={() => handleChangeRes(480)}>480p</button>
+              </>
+            )}
+          </div>
+        </div>
+        <button onClick={() => setPipMode(!pipMode)}>
+          PiP
+        </button>
+        <button onClick={() => handleFullScreen()}>
+          Full
+        </button>
+      </div>
+    </div>
+    </>
+  )
+};
+
+export default HLSPlayer;

@@ -1,0 +1,26 @@
+/* .container{
+
+} */
+.wide{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.small{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+@media screen and (max-width: 1200px) {
+    .small{
+        display: flex;
+    }
+    .container h4{
+        display: none;
+    }
+    .wide{
+        display: none;
+    }
+}

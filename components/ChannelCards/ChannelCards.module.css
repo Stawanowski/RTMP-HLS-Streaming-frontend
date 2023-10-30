@@ -1,0 +1,58 @@
+.channelCardOffline, .channelCardOnline{
+    width: 100%;
+    padding: 0 0.2rem;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    border-radius: 5px;
+    height: 3rem;
+    gap: 0.5rem;
+    align-items: center;
+    border: 2px solid rgb(44, 44, 44);
+    cursor: pointer !important;
+    padding-bottom: 0.2rem;
+}
+.channelCardOffline:hover, .channelCardOnline:hover, .channelCardOfflineCompact:hover, .channelCardOnlineCompact:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+
+}
+.channelCardOffline p, .channelCardOnline p{
+    font-size: 0.8rem;
+}
+.channelCardOnline{
+    border-bottom: 2px solid red;
+    border-left: 2px solid red;
+}
+.imageContainer{
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.pfpImage{
+    object-fit: cover;
+    object-position: center center;
+}
+.channelCardOfflineCompact, .channelCardOnlineCompact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+}
+.channelCardOfflineCompact{
+    border: 1px solid rgb(46, 46, 46);
+    background-color: rgb(83, 83, 83);
+}
+.channelCardOnlineCompact{
+    border: 1px solid rgb(175, 29, 29);
+    background-color: rgba(235, 36, 36, 0.479);
+}
+
+.channelCardOfflineCompact .imageContainer, .channelCardOnlineCompact .imageContainer{
+    width: 40px;
+    height: 40px;
+} 

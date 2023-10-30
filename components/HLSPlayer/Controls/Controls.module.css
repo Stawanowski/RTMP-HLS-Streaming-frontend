@@ -1,0 +1,16 @@
+.custom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .custom-controls button {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .custom-controls input {
+    width: 100px;
+  }
+  

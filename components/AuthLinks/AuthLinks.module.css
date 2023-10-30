@@ -1,0 +1,41 @@
+.RegisterLink__container, .LoginLink__container{
+    width: 130px;
+    height: 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.LoginLink__container{
+    border: 4px solid #b3a72c;
+    /* background-color: #213555; */
+    transition: 150ms ease-in-out all;
+}
+.RegisterLink__container{
+    border: 4px solid #b3a72c;
+    background-color: #b3a72c;
+    transition: 150ms ease-in-out all;
+}
+.LoginLink__container:hover{
+    border: 4px solid #a29820;
+    background-color: #a29820;
+    border-radius: 15px;
+}
+.RegisterLink__container:hover{
+    border: 4px solid #a29820;
+    background-color: #a29820;
+    border-radius: 15px;
+}
+
+@media screen and ( max-width:700px) {
+    .RegisterLink__container, .LoginLink__container{
+        width: 75px;
+        font-size: 0.6rem;
+        font-weight: 550;
+        letter-spacing: 1px;
+    }
+}

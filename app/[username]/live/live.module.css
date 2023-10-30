@@ -1,0 +1,113 @@
+.player{
+    max-width: var(--mainContainer-size);
+}
+.offlineContainer{
+    width: var(--mainContainer-size);
+    height: min-content;
+    background-color: cadetblue;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+}
+.imageContainer{
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    margin-top: 0.2rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.pfpImage{
+    object-fit: cover;
+    object-position: center center;
+}
+.channelTitle, .streamTitle, .categoryTitle{
+    letter-spacing: 1px;
+    font-weight: 500;
+    transition:200ms ease all;
+    width: min-content;
+}
+.categoryTitle{
+    color: rgba(215, 215, 215, 0.531);
+    font-weight: 600;
+}
+.channelTitle:hover{
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    transform:  scale(1.05);
+    transform: translateY(-2px);
+    padding-bottom: 2px;
+}
+.categoryTitle:hover{
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    /* scale: 1.05; */
+    transform:  scale(1.05);
+
+    /* transform: translateX(5px); */
+    padding-bottom: 2px;
+}
+@media screen and (max-width: 1200px) {
+    .offlineContainer{
+        width:   var(--HlsPlayerMid-size);
+    }
+}
+@media screen and (max-width: 920px) {
+    .container{
+        flex-direction: column;
+        width: var(--mainContainerSmall-size);
+    }
+    .offlineContainer{
+        width: 100%;
+    }
+    .imageContainer{
+        height: 32px;
+        width: 32px;
+        min-height: 32px;
+        min-width: 32px;
+        max-height: 32px;
+        max-width: 32px;
+    }
+    .channelTitle{
+
+        font-size: 1rem;
+    }
+    .streamTitle{
+        font-size: 0.8rem;
+    }
+    .categoryTitle{
+
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 400px) {
+ 
+    .channelTitle{
+
+        font-size: 0.8rem;
+    }
+    .streamTitle{
+        font-size: 0.5rem;
+    }
+    .categoryTitle{
+
+        font-size: 0.65rem;
+    }
+}
