@@ -1,5 +1,7 @@
 # Nextjs Streaming app - Frontend
 
+Work in progress...
+
 ## Setup
 
 ```
